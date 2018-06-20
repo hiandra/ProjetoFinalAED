@@ -17,5 +17,5 @@ class Livros{
 		
 	Livros();
 	
-	void inicializa(int code);
+	void inicializa();
 };

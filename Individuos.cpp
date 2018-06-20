@@ -15,7 +15,7 @@ Individuos::Individuos()	//construtor da classe
 	RG = "";
 	senha = "";
 	codigo = -1;
-	funcionario = 0;
+	funcionario = "0";
 }
 
 void Individuos::inicializaCliente(int code)	//cadastro de clientes

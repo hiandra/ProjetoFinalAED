@@ -15,11 +15,11 @@ class Individuos{
 		string RG;
 		string senha;
 		int codigo;
-		bool funcionario;
+		string funcionario;
 		
 	Individuos();	//construtor da classe
 	
-	void inicializa(int code);	//cadastro é feito pelo funcionário da biblioteca
+	void inicializaCliente(int code);	//cadastro é feito pelo funcionário da biblioteca
 	
 };
 

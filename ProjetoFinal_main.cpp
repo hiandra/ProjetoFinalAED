@@ -15,6 +15,7 @@ int main()
 	Gerenciamento obj1;
 	//obj1.addIndividuos();
 	//obj1.removeIndividuo();
+	obj1.editaIndividuo();
 	
 	
 	return 0;
