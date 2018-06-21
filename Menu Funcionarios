@@ -1,0 +1,59 @@
+void menuFuncionario()
+{
+	int op,code;
+	string name;
+	while(op != 0)
+	{
+		while(op > 0 && op < 9 )
+		{
+			cout <<"Menu Funcionário.\n";
+			cout <<"Opcoes: \n\n";
+			cout << "1. Buscar cliente. \n";
+			cout << "2. Adicionar cliente.\n";
+			cout << "3. Buscar livro.\n";
+			cout << "4. Adicionar livro.\n";
+			cout << "5. Emprestar livros. \n";
+			cout << "6. Remover livro.\n";
+			cout << "7. Editar livro.\n";
+			cout << "8. Adicionar funcionário.\n";
+			cout << "0. Sair.\n;
+			cin >> op;
+		}
+		
+		switch(op)
+		{
+			case 1:
+				cout <<"Qual cliente quer buscar?\n";
+				cin >> code;
+				buscaIndividuo(code);
+				break;
+				
+			case 2:
+				addIndividuos();
+				break;
+			case 3:
+				getline(cin,name);
+				buscaLivro(name);
+				break;
+			case 4:
+				addLivro();
+				break;
+			case 5:
+				emprestarLivro();
+				break;
+			case 6;
+				//removeLivro();
+				break;
+			case 7:
+				//addFuncionario();
+				break;
+			case 8:
+				editaLivro();
+				break;
+			case 9:
+				return;
+				break;
+		}
+	}
+	return;
+}
