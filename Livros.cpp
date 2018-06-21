@@ -11,12 +11,12 @@ Livros::Livros()
 	titulo = "";
 	autor = "";
 	editora = "";
-	edicao = -1;
+	edicao = "";
 	nExemplares = 0;						// o livro quando cadastrado está disponível
-	codigoIndividuosSolicitantes.clear();	//o livro quando cadastrado não está emprestado para ninguém
+	codigoIndividuosSolicitantes = "-";	//o livro quando cadastrado não está emprestado para ninguém
 }
 
-void Livros::inicializa()
+void Livros::inicializaLivro()
 {
 	string nada = "";
 	cout << "Digite o título do livro: ";
@@ -25,21 +25,19 @@ void Livros::inicializa()
 	cout << endl;
 	
 	cout << "Digite o autor: ";
-	getline(cin,nada);
+	//getline(cin,nada);
 	getline(cin,autor);
 	cout << endl;
 	
 	cout << "Digite a editora: ";
-	cin >> editora;
+	getline(cin,editora);
 	cout << endl;
 	
 	cout << "Digite o edicao: ";
-	cin >> edicao;
+	getline(cin,edicao);
 	cout << endl;
 	
-	cout << "Digite o número de exemplares do livro: ";
-	cin >> nExemplares;
-	cout << endl;
-	
+	cout << "Digite o número de exemplares disponíveis do livro: ";
+	cin >> nExemplares;	
 }
 

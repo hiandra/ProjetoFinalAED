@@ -11,11 +11,11 @@ class Livros{
 		string titulo;
 		string autor;
 		string editora;
-		int edicao;
-		vector<int> codigoIndividuosSolicitantes;
+		string edicao;
+		string codigoIndividuosSolicitantes;	//codigos separados por vírgulas
 		int nExemplares;	//n° de exemplares disponíveis
 		
 	Livros();
 	
-	void inicializa(int code);
+	void inicializaLivro();
 };
