@@ -152,6 +152,7 @@ int Gerenciamento::busca_binaria(int x, int N, int a[])	//este método recebe um 
 	
 	while(L<R)
 	{
+		//cout << "L = "<<L<<" e R = "<<R;
 		m = (L+R)/2;
 		
 		if(a[m] < x)
@@ -186,7 +187,7 @@ void Gerenciamento::buscaIndividuo(int& flag, list<Individuos>::iterator& it)	//
 	for(i=0;i<codigos_individuos.size();i++)	//carrega o array com os elementos de codigos_individuos
 		a[static_cast<int>(i)] =  codigos_individuos[i];
 	
-	cout << "Digite o código da pessoa: ";
+	cout << "Digite o Código do Usuário: ";
 	cin >> code;
 	cout << endl;
 	
@@ -420,7 +421,8 @@ void Gerenciamento::addLivros()	//adiciona n livros na lista.
 	list<Livros>::iterator it;
 	string arquivo = "livros.txt";
 	
-	Gerenciamento::readFromFileIndividuos();
+	//Gerenciamento::readFromFileIndividuos();
+	Gerenciamento::readFromFileLivros();	// MUDEI AQUI
 	
 	cout << "Digite quantos livros vai cadastrar: ";
 	cin >> n;
@@ -477,7 +479,7 @@ void Gerenciamento::removeLivro()
 	
 	Gerenciamento::buscaLivro(flag,it);
 	
-	if(flag == 1)	// se o individuo está cadastrado, apaga ele
+	if(flag == 1)	// se o livro está cadastrado, apaga ele
 		it = livros.erase(it);
 	
 	Gerenciamento::writeFileLivros();
@@ -487,8 +489,7 @@ void Gerenciamento::removeLivro()
 //-------------------------------------------------------------------------------------------------------------------------------------
 
 void Gerenciamento::editaLivro()
-	{
-	
+{
 	int flag = 0;
 	list<Livros>::iterator it;
 	list<Livros>::size_type i,j,k;
@@ -588,7 +589,7 @@ void Gerenciamento::editaLivro()
 	}
 	
 	Gerenciamento::writeFileLivros();
-	}
+}
 
 //-------------------------------------------------------------------------------------------------------------------------------------
 /*
@@ -682,5 +683,122 @@ void Gerenciamento::mostraLivros()	//mostra todos os livros cadastrados
 		}
 	}
 }
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+bool Gerenciamento::menuInicial()
+{
+	int op;
+	
+	cout << "\t\t\t" << "######Bem Vindo à Biblioteca########"<<endl;
+	cout << "\t\t\t" << "#                                  #"<<endl;
+	cout << "\t\t\t" << "# 1. Fazer Login.                  #"<<endl;
+	cout << "\t\t\t" << "#                                  #"<<endl;
+	cout << "\t\t\t" << "# 2. Fazer Cadastro na plataforma. #"<<endl;
+	cout << "\t\t\t" << "#                                  #"<<endl;
+	cout << "\t\t\t" << "# 3. Sair do Programa              #"<<endl;
+	cout << "\t\t\t" << "#                                  #"<<endl;
+	cout << "\t\t\t" << "####################################"<<endl;
+	cout << "\t\t\t" << "# Escolha uma das opções: ";cin >> op;cout<<endl;
+	
+	switch(op){
+		case 1:
+			Gerenciamento::menuLogin();
+			break;
+		case 2:
+			Gerenciamento::addIndividuos();
+			break;
+		case 3:
+			return 1;
+			break;
+		default:
+			break;
+	}
+	return 0;
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+void Gerenciamento::menuLogin()
+{
+	string nada,senhaV;
+	int code,flag=-1;
+	list<Individuos>::iterator it;
+	
+	while(flag==-1){
+		system("cls");
+		cout << "\t\t\t" << "#################### Login ##################"<< endl;
+		cout << "\t\t\t" << "#                                           #"<< endl;
+		cout << "\t\t\t" << "# 1. Informe o Código de Usuário: ";cin>>code;
+		cout << "\t\t\t" << "#                                           #"<< endl;
+		cout << "\t\t\t" << "# 2. Informe a Senha de Usuário: ";cin>>senhaV;
+		cout << "\t\t\t" << "#                                           #"<< endl;
+		cout << "\t\t\t" << "#############################################"<< endl;
+		cout << endl;
+		
+		Gerenciamento::buscaLogin(flag,it,code);
+		
+		if(flag != -1) {
+			if(senhaV == (*it).senha) {
+				if((*it).funcionario == "1") {
+					Gerenciamento::menuFuncionario();
+					flag = -2;
+				}
+				else {
+					//void menuCLiente();
+				}
+			}
+			else {
+				cout << "\t\t\t" << "Senha invalida!" << endl;
+				flag = -1;
+				cout << "\t\t\t";
+				system("pause");
+			}
+		}
+		else {
+			cout << "\t\t\t" << "Login inválido!" << endl;
+			cout << "\t\t\t";
+			system("pause");
+		}
+	}
+
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+void Gerenciamento::buscaLogin(int& flag, list<Individuos>::iterator& it, int code)
+{
+	int pos_individuo;	//posicao do individuo com código fornecido
+	int j;
+	vector<int>::size_type i;
+	
+	Gerenciamento::readFromFileIndividuos();
+	
+	it = individuos.begin();
+	
+	int size = static_cast<int>(codigos_individuos.size());
+	int a[size];
+	
+	for(i=0;i<codigos_individuos.size();i++) {	//carrega o array com os elementos de codigos_individuos
+		a[static_cast<int>(i)] =  codigos_individuos[i];
+		//cout << a[static_cast<int>(i)] << endl;
+	}
+	
+	pos_individuo = Gerenciamento::busca_binaria(code,size,a);
+	
+	if(pos_individuo == -1)
+		cout << "\t\t\t" << "O indivíduo não está cadastrado." << endl;
+	else
+	{
+		flag = 1;
+		for(j=0;j<pos_individuo;j++)	
+			it++;
+	}
+	
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 //-------------------------------------------------------------------------------------------------------------------------------------

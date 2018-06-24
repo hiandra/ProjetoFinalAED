@@ -43,18 +43,20 @@ class Gerenciamento : public Individuos, public Livros
 	
 	void editaLivro();	//edita algum parâmetro do livro de nome "name"
 	
-	// void menuInicial();	//mostra opcoes de login e cadastro de usuário
-	
-	//void menuLogin();	//login da pessoa já cadastrada
-	
 	//void emprestaLivro();	//atualiza o "nExemplares" e o código do indíviduo solicitante 				GABRIEL
-	
-	//void menuCLiente();	//mostra as funções acessáveis por clientes									HIANDRA
-	
-	//void menuFuncionário();	//mostra as funções acessáveis por funcionários
 	
 	void mostraIndividuos();	//mostra todos indivíduos cadastrados
 	
 	void mostraLivros();	//mostra todos os livros cadastrados
-			
+	
+	bool menuInicial();	//mostra opcoes de login e cadastro de usuário
+	
+	void menuLogin();	//login da pessoa já cadastrada
+	
+	void buscaLogin(int& flag, list<Individuos>::iterator& it, int code);	//Checa se login é válido ou não
+	
+	//void menuCLiente();	//mostra as funções acessáveis por clientes									HIANDRA
+	
+	void menuFuncionario();	//mostra as funções acessáveis por funcionários
+	
 };
