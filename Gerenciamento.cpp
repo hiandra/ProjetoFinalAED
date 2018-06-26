@@ -72,7 +72,6 @@ void Gerenciamento::readFromFileIndividuos()	// este método lê o arquivo dos ind
 	
 		pessoa.codigo = stoi(all[j]);	
 		codigos_individuos.push_back(pessoa.codigo);
-					
 		individuos.push_back(pessoa);			
 	}
 }	
@@ -117,7 +116,7 @@ void Gerenciamento::addIndividuos()	//adiciona n indivíduos (clientes) na lista.
 	list<Individuos>::iterator it;
 	string arquivo = "individuos.txt";
 	
-	Gerenciamento::readFromFileIndividuos();
+//	Gerenciamento::readFromFileIndividuos();
 	
 	cout << "Digite quantas pessoas vai cadastrar: ";
 	cin >> n;
@@ -139,7 +138,7 @@ void Gerenciamento::addIndividuos()	//adiciona n indivíduos (clientes) na lista.
 		code++;
 	}
 	
-	Gerenciamento::writeFileIndividuos();
+	//Gerenciamento::writeFileIndividuos();
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -176,7 +175,7 @@ void Gerenciamento::buscaIndividuo(int& flag, list<Individuos>::iterator& it)	//
 	string arquivo = "individuos.txt";
 	vector<int>::size_type i;
 	
-	Gerenciamento::readFromFileIndividuos();
+	//Gerenciamento::readFromFileIndividuos();
 	
 	it = individuos.begin();
 	
@@ -218,7 +217,7 @@ void Gerenciamento::removeIndividuo()	//remove um indivíduo da lista
 	if(flag == 1)	// se o individuo está cadastrado, apaga ele
 		it = individuos.erase(it);
 	
-	Gerenciamento::writeFileIndividuos();
+	//Gerenciamento::writeFileIndividuos();
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -230,8 +229,8 @@ void Gerenciamento::editaIndividuo()	//edita n parâmetros de um dado indivíduo
 	list<Individuos>::size_type i,j,k;
 	int opcao = 1;
 	
-	if(individuos.size()==0)	//garante que eu não vou ficar lendo o arquivo à toa
-		Gerenciamento::readFromFileIndividuos();	
+	//if(individuos.size()==0)	//garante que eu não vou ficar lendo o arquivo à toa
+	//	Gerenciamento::readFromFileIndividuos();	
 			
 	i = individuos.size();
 	
@@ -324,7 +323,7 @@ void Gerenciamento::editaIndividuo()	//edita n parâmetros de um dado indivíduo
 		}
 	}
 	
-	Gerenciamento::writeFileIndividuos();
+	//Gerenciamento::writeFileIndividuos();
 	
 }
 
@@ -420,7 +419,7 @@ void Gerenciamento::addLivros()	//adiciona n livros na lista.
 	list<Livros>::iterator it;
 	string arquivo = "livros.txt";
 	
-	Gerenciamento::readFromFileIndividuos();
+//	Gerenciamento::readFromFileIndividuos();
 	
 	cout << "Digite quantos livros vai cadastrar: ";
 	cin >> n;
@@ -435,7 +434,7 @@ void Gerenciamento::addLivros()	//adiciona n livros na lista.
 	
 	Gerenciamento::mostraLivros();system("pause");
 	
-	Gerenciamento::writeFileLivros();
+	//Gerenciamento::writeFileLivros();
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -445,7 +444,7 @@ void Gerenciamento::buscaLivro(int& flag, list<Livros>::iterator& it)
 	string arquivo = "livros.txt";
 	string title,edition;
 	
-	Gerenciamento::readFromFileLivros();
+	//Gerenciamento::readFromFileLivros();
 	
 	it = livros.begin();
 	
@@ -480,7 +479,7 @@ void Gerenciamento::removeLivro()
 	if(flag == 1)	// se o individuo está cadastrado, apaga ele
 		it = livros.erase(it);
 	
-	Gerenciamento::writeFileLivros();
+//	Gerenciamento::writeFileLivros();
 	
 }
 
@@ -494,8 +493,8 @@ void Gerenciamento::editaLivro()
 	list<Livros>::size_type i,j,k;
 	int opcao = 1;
 	
-	if(livros.size()==0)	//garante que eu não vou ficar lendo o arquivo à toa
-		Gerenciamento::readFromFileLivros();	
+//	if(livros.size()==0)	//garante que eu não vou ficar lendo o arquivo à toa
+	//	Gerenciamento::readFromFileLivros();	
 	
 	i = livros.size();
 		Gerenciamento::buscaLivro(flag,it);
@@ -587,7 +586,7 @@ void Gerenciamento::editaLivro()
 		}
 	}
 	
-	Gerenciamento::writeFileLivros();
+//	Gerenciamento::writeFileLivros();
 	}
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -628,9 +627,7 @@ void Gerenciamento::emprestaLivro()
 
 void Gerenciamento::mostraIndividuos()	//mostra todos indivíduos cadastrados
 {
-	string arquivo = "individuos.txt";
 	list<Individuos>::iterator it;
-	
 	
 	cout << endl;
 	if(individuos.size() == 0)
@@ -663,7 +660,7 @@ void Gerenciamento::mostraLivros()	//mostra todos os livros cadastrados
 {
 	string arquivo = "livros.txt";
 	list<Livros>::iterator it;
-	Gerenciamento::readFromFileLivros();
+//	Gerenciamento::readFromFileLivros();
 	
 	cout << endl;
 	if(livros.size() == 0)
@@ -684,3 +681,260 @@ void Gerenciamento::mostraLivros()	//mostra todos os livros cadastrados
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
+
+void Gerenciamento::menuLogin()
+{
+	string nada,senhaV;
+	int code,flagOK=-1,flag=0;
+	list<Individuos>::iterator it;
+	
+	while(flagOK==-1){
+		system("cls");
+		cout << "\t\t\t" << "#################### Login ##################"<< endl;
+		cout << "\t\t\t" << "#                                           #"<< endl;
+		cout << "\t\t\t" << "# 1. Informe o Código de Usuário: ";cin>>code;
+		cout << "\t\t\t" << "#                                           #"<< endl;
+		cout << "\t\t\t" << "# 2. Informe a Senha de Usuário: ";cin>>senhaV;
+		cout << "\t\t\t" << "#                                           #"<< endl;
+		cout << "\t\t\t" << "#############################################"<< endl;
+		cout << endl;
+		
+		Gerenciamento::buscaLogin(flag,it,code);
+		
+		
+		if(flag != -1) {
+			if(senhaV == (*it).senha) {
+				if((*it).funcionario == "1") {
+					Gerenciamento::menuFuncionario();
+					flagOK = -2;
+				}
+				else {
+					Gerenciamento::menuCLiente();
+				}
+			}
+			else {
+				cout << "\t\t\t" << "Senha invalida!" << endl;
+				flagOK = -1;
+				cout << "\t\t\t";
+				system("pause");
+			}
+		}
+		else {
+			cout << "\t\t\t" << "Login inválido!" << endl;
+			cout << "\t\t\t";
+			system("pause");
+		}
+	}
+
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+bool Gerenciamento::menuInicial()
+{
+	int op;
+	
+	Gerenciamento::writeFileIndividuos();
+	Gerenciamento::writeFileLivros();
+	
+	individuos.clear();
+	livros.clear();
+	
+	Gerenciamento::readFromFileIndividuos();
+	Gerenciamento::readFromFileLivros();
+	
+	
+	cout << "\t\t\t" << "######Bem Vindo à Biblioteca########"<<endl;
+	cout << "\t\t\t" << "#                                  #"<<endl;
+	cout << "\t\t\t" << "# 1. Fazer Login.                  #"<<endl;
+	cout << "\t\t\t" << "#                                  #"<<endl;
+	cout << "\t\t\t" << "# 2. Fazer Cadastro na plataforma. #"<<endl;
+	cout << "\t\t\t" << "#                                  #"<<endl;
+	cout << "\t\t\t" << "# 3. Sair do Programa              #"<<endl;
+	cout << "\t\t\t" << "#                                  #"<<endl;
+	cout << "\t\t\t" << "####################################"<<endl;
+	cout << "\t\t\t" << "# Escolha uma das opções: ";cin >> op;cout<<endl;
+	
+	switch(op){
+		case 1:
+			Gerenciamento::menuLogin();
+			break;
+		case 2:
+			Gerenciamento::addIndividuos();
+			break;
+		case 3:
+			//Gerenciamento::mostraIndividuos();
+			Gerenciamento::writeFileIndividuos();
+			Gerenciamento::writeFileLivros();
+			return 1;
+			break;
+		default:
+			break;
+	}
+	return 0;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void Gerenciamento::buscaLogin(int& flag, list<Individuos>::iterator& it, int code)
+{
+	int pos_individuo;	//posicao do individuo com código fornecido
+	int j;
+	vector<int>::size_type i;
+	
+	//Gerenciamento::readFromFileIndividuos();
+	
+	it = individuos.begin();
+	
+	int size = static_cast<int>(codigos_individuos.size());
+	int a[size];
+	
+	for(i=0;i<codigos_individuos.size();i++) {	//carrega o array com os elementos de codigos_individuos
+		a[static_cast<int>(i)] =  codigos_individuos[i];
+		//cout << a[static_cast<int>(i)] << endl;
+	}
+	
+	pos_individuo = Gerenciamento::busca_binaria(code,size,a);
+	
+	if(pos_individuo == -1)
+		cout << "\t\t\t" << "O indivíduo não está cadastrado." << endl;
+	else
+	{
+		flag = 1;
+		for(j=0;j<pos_individuo;j++)	
+			it++;
+	}
+	
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+void Gerenciamento::menuCLiente(){
+	
+	int op,flag=-1;
+	list<Livros>::iterator itb;
+	
+	while(op != 2) {
+		system("cls");
+		cout << "\t\t\t" << "################# Menu Cliente ###############"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 1. Buscar Livro.                           #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 2. Sair.                                   #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "##############################################"<< endl;
+		cout << endl;
+		
+		cout << "\t\t\t" << "Escolha uma das opções: ";
+		cin >> op;
+		
+		switch(op){
+			case 1:
+				//Gerenciamento::readFromFileIndividuos();
+				itb = livros.begin();
+				Gerenciamento::buscaLivro(flag,itb);
+				
+				cout << "\t\t\t" << "Título: " << (*itb).titulo << endl;
+				cout << "\t\t\t" << "Autor: " <<  (*itb).autor << endl;
+				cout << "\t\t\t" << "Editora: " <<  (*itb).editora << endl;
+				cout << "\t\t\t" << "Edição: " <<  (*itb).edicao << endl; 
+				cout << "\t\t\t" << "Código dos indivíduos solicitantes" << (*itb).codigoIndividuosSolicitantes << endl;
+				cout << "\t\t\t" << "Número de exemplares disponíveis: " <<  (*itb).nExemplares << endl;
+				cout << endl;
+				system("pause");
+				break;
+			case 2:
+				break;
+			default:
+				break;
+		}
+	}
+	
+}
+
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+void Gerenciamento::menuFuncionario(){
+	int op,flag=0;
+	bool flagOUT=1;
+	list<Livros>::iterator itb;
+	list<Individuos>::iterator itInd;
+	
+	while(flagOUT) {
+		system("cls");
+		cout << "\t\t\t" << "############### Menu Funcionário #############"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 1. Buscar Cliente ou Funcionário.          #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 2. Adicionar Cliente.                      #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 3. Adicionar Funcionário.                  #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 4. Mostrar pessoas cadastradas.            #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 5. Buscar Livro.                           #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 6. Adicionar Livro.                        #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 7. Emprestar Livro.                        #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 8. Remover Livro.                          #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 9. Mostrar Livros cadastrados.             #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 10. Sair.                                  #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "##############################################"<< endl;
+		cout << endl;
+		
+		cout << "\t\t\t" << "Escolha uma das opções: ";
+		cin >> op;
+		
+		switch(op){
+			case 1:
+				Gerenciamento::buscaIndividuo(flag,itInd);
+				cout << "Nome: " << (*itInd).nome << endl;
+				cout << "Email: " <<  (*itInd).email << endl;
+				cout << "Telefone: " <<  (*itInd).telefone << endl;
+				cout << "Endereço: " <<  (*itInd).endereco << endl; 
+				cout << "RG: " <<  (*itInd).RG << endl;
+				cout << "Código: " <<  (*itInd).codigo << endl;
+				cout << "Funcionário: " << (*itInd).funcionario << endl;
+				system("pause");system("cls");
+				break;
+			case 2:
+				Gerenciamento::addIndividuos();
+				
+				break;
+			case 3:
+				Gerenciamento::editaIndividuo();
+				break;
+			case 4:
+				Gerenciamento::mostraIndividuos();
+				break;
+			case 5:
+				Gerenciamento::removeIndividuo();
+				break;
+			case 6:
+				Gerenciamento::addLivros();
+				break;
+			case 7:
+				
+				break;
+			case 8:
+				Gerenciamento::removeLivro();
+				break;
+			case 9:
+				Gerenciamento::mostraLivros();
+				break;
+			case 10:
+				flagOUT=0;
+				break;
+			default:
+				break;
+		}
+	}
+
+}
+
