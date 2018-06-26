@@ -33,7 +33,7 @@ class Gerenciamento : public Individuos, public Livros
 	
 	void readFromFileLivros();	//salva os dados de "livros.txt" na lista livros e inicializa o vector "codigos_livros"		
 	
-	void writeFileLivros();	//salva os dados da lista livros no arquivo "livros.txt"
+	void writeFileLivros();	//salva os dados da lista livros no arquivo "livros.txt"		-- Apagar o conteúdo antes de escrever
 	
 	void addLivros();	//adiciona "n" livros na lista e os salva no arquivo "livros.txt"				
 	
@@ -55,7 +55,7 @@ class Gerenciamento : public Individuos, public Livros
 	
 	void buscaLogin(int& flag, list<Individuos>::iterator& it, int code);	//Checa se login é válido ou não
 	
-	//void menuCLiente();	//mostra as funções acessáveis por clientes									HIANDRA
+	void menuCLiente();	//mostra as funções acessáveis por clientes									HIANDRA
 	
 	void menuFuncionario();	//mostra as funções acessáveis por funcionários
 	

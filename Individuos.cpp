@@ -44,7 +44,8 @@ void Individuos::inicializaCliente(int code)	//cadastro de clientes
 	cout << endl;
 	
 	cout << "Digite o endereco: ";
-	cin >> endereco;
+	getline(cin,nada);
+	getline(cin,endereco);
 	cout << endl;
 	
 	codigo = code;

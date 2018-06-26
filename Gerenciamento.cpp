@@ -682,6 +682,7 @@ void Gerenciamento::mostraLivros()	//mostra todos os livros cadastrados
 			cout << endl;
 		}
 	}
+	system("pause");system("cls");
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -738,6 +739,8 @@ void Gerenciamento::menuLogin()
 		
 		Gerenciamento::buscaLogin(flag,it,code);
 		
+		//Gerenciamento::mostraIndividuos();
+		
 		if(flag != -1) {
 			if(senhaV == (*it).senha) {
 				if((*it).funcionario == "1") {
@@ -745,7 +748,7 @@ void Gerenciamento::menuLogin()
 					flag = -2;
 				}
 				else {
-					//void menuCLiente();
+					Gerenciamento::menuCLiente();
 				}
 			}
 			else {
@@ -799,6 +802,124 @@ void Gerenciamento::buscaLogin(int& flag, list<Individuos>::iterator& it, int co
 
 //-------------------------------------------------------------------------------------------------------------------------------------
 
+void Gerenciamento::menuCLiente(){
+	
+	int op,flag=-1;
+	list<Livros>::iterator itb;
+	
+	while(op != 2) {
+		system("cls");
+		cout << "\t\t\t" << "################# Menu Cliente ###############"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 1. Buscar Livro.                           #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 2. Sair.                                   #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "##############################################"<< endl;
+		cout << endl;
+		
+		cout << "\t\t\t" << "Escolha uma das opções: ";
+		cin >> op;
+		
+		switch(op){
+			case 1:
+				Gerenciamento::readFromFileIndividuos();
+				itb = livros.begin();
+				Gerenciamento::buscaLivro(flag,itb);
+				
+				cout << "\t\t\t" << "Título: " << (*itb).titulo << endl;
+				cout << "\t\t\t" << "Autor: " <<  (*itb).autor << endl;
+				cout << "\t\t\t" << "Editora: " <<  (*itb).editora << endl;
+				cout << "\t\t\t" << "Edição: " <<  (*itb).edicao << endl; 
+				cout << "\t\t\t" << "Código dos indivíduos solicitantes" << (*itb).codigoIndividuosSolicitantes << endl;
+				cout << "\t\t\t" << "Número de exemplares disponíveis: " <<  (*itb).nExemplares << endl;
+				cout << endl;
+				system("pause");
+				break;
+			case 2:
+				break;
+			default:
+				break;
+		}
+	}
+	
+}
 
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+void Gerenciamento::menuFuncionario(){
+	int op,flag=-1;
+	bool flagOUT=1;
+	list<Livros>::iterator itb;
+	list<Individuos>::iterator it;
+	
+	while(flagOUT) {
+		system("cls");
+		cout << "\t\t\t" << "############### Menu Funcionário #############"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 1. Buscar Cliente ou Funcionário.          #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 2. Adicionar Cliente.                      #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 3. Adicionar Funcionário.                  #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 4. Mostrar pessoas cadastradas.            #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 5. Buscar Livro.                           #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 6. Adicionar Livro.                        #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 7. Emprestar Livro.                        #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 8. Remover Livro.                          #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 9. Mostrar Livros cadastrados.             #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "# 10. Sair.                                  #"<< endl;
+		cout << "\t\t\t" << "#                                            #"<< endl;
+		cout << "\t\t\t" << "##############################################"<< endl;
+		cout << endl;
+		
+		cout << "\t\t\t" << "Escolha uma das opções: ";
+		cin >> op;
+		
+		switch(op){
+			case 1:
+				
+				break;
+			case 2:
+				Gerenciamento::addIndividuos();
+				break;
+			case 3:
+				Gerenciamento::editaIndividuo();
+				break;
+			case 4:
+				Gerenciamento::mostraIndividuos();
+				break;
+			case 5:
+				Gerenciamento::removeIndividuo();
+				break;
+			case 6:
+				Gerenciamento::addLivros();
+				break;
+			case 7:
+				
+				break;
+			case 8:
+				Gerenciamento::removeLivro();
+				break;
+			case 9:
+				Gerenciamento::mostraLivros();
+				break;
+			case 10:
+				flagOUT=0;
+				break;
+			default:
+				break;
+		}
+	}
+
+}
 
 //-------------------------------------------------------------------------------------------------------------------------------------

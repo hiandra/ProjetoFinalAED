@@ -14,3 +14,19 @@ asa sul
 mestre
 1
 1
+Iago
+iago@unb.br
+321456
+guara
+987456
+cliente
+0
+2
+Sergio Pereira
+pereira@gmail.com
+61345765
+guara
+2475678
+senha
+0
+3
