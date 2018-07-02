@@ -1,12 +1,24 @@
-bla1
-thiago
-thiago
-thiago
--
+Guerra e Paz
+Liev Tolstoi
+Companhia das Letras
 3
-bla1
-thiago
-thiago
-thiago
+4 3
+1
+Dom Casmurro
+Machado de Assis
+LPM
+4
 -
-3
+2
+Memorias Postumas de Bras Cubas
+Machado de Assis
+LPM
+4
+2 9
+1
+Olhai os Lirios do Campo
+Erico Verissimo
+Companhia das Letras
+6
+-
+2

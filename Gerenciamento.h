@@ -4,6 +4,8 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <conio.h>
+#include <windows.h>
 
 using namespace std;
 
@@ -17,11 +19,15 @@ class Gerenciamento : public Individuos, public Livros
 		
 	Gerenciamento();	//construtor
 	
+	void atualiza(); //escreve dados no arquivo, apaga vetores e lê novamente
+	
 	void readFromFileIndividuos();	//salva os dados de "individuos.txt" na lista individuos e inicializa o vector "codigos_individuos"
 	
 	void writeFileIndividuos();	//salva os dados da lista individuos no arquivo "individuos.txt"
 		
-	void addIndividuos();	//adiciona n indivíduos na lista e os salva no arquivo "individuos.txt"
+	void addIndividuos();	//adiciona n indivíduos na lista
+	
+	void addFuncionarios();  //adiciona n funcionários na lista
 	
 	int busca_binaria(int x, int N, int a[]);	//busca a chave "x" no array "a" de tamanho "N"
 	
@@ -31,7 +37,7 @@ class Gerenciamento : public Individuos, public Livros
 	
 	void editaIndividuo();	//edita algum parâmetro do indivíduo de código "x"
 	
-	void readFromFileLivros();	//salva os dados de "livros.txt" na lista livros e inicializa o vector "codigos_livros"		
+	void readFromFileLivros();	//salva os dados de "livros.txt" na lista livros e inicializa o vector "titulos_livros"		
 	
 	void writeFileLivros();	//salva os dados da lista livros no arquivo "livros.txt"
 	
@@ -53,10 +59,12 @@ class Gerenciamento : public Individuos, public Livros
 	
 	void menuLogin();	//login da pessoa já cadastrada
 	
-	//void emprestaLivro();	//atualiza o "nExemplares" e o código do indíviduo solicitante 				GABRIEL
+	void emprestaLivro();	//atualiza o "nExemplares" e o código do indíviduo solicitante 
 	
-	void menuCLiente();	//mostra as funções acessáveis por clientes									HIANDRA
+	void devolveLivro();			
 	
-	void menuFuncionario();	//mostra as funções acessáveis por funcionários
+	void menuCliente(int& flagOK);	//mostra as funções acessáveis por clientes								
+	
+	void menuFuncionario(int& flagOK);	//mostra as funções acessáveis por funcionários
 			
 };

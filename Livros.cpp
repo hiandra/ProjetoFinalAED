@@ -3,6 +3,8 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <conio.h>
+#include <windows.h>
 #include "Livros.h"
 using namespace std;
 	
@@ -33,11 +35,13 @@ void Livros::inicializaLivro()
 	getline(cin,editora);
 	cout << endl;
 	
-	cout << "Digite o edicao: ";
+	cout << "Digite qual a edição do livro: ";
 	getline(cin,edicao);
 	cout << endl;
 	
 	cout << "Digite o número de exemplares disponíveis do livro: ";
 	cin >> nExemplares;	
+	
+	cout << "Livro cadastrado com sucesso." << endl << endl;
 }
 

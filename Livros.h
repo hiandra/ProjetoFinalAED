@@ -3,6 +3,8 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <conio.h>
+#include <windows.h>
 using namespace std;
 
 class Livros{
@@ -12,7 +14,7 @@ class Livros{
 		string autor;
 		string editora;
 		string edicao;
-		string codigoIndividuosSolicitantes;	//codigos separados por vírgulas
+		string codigoIndividuosSolicitantes;	//codigos separados por espaços
 		int nExemplares;	//n° de exemplares disponíveis
 		
 	Livros();
