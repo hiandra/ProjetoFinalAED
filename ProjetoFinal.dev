@@ -1,6 +1,6 @@
 [Project]
-FileName=PFinal.dev
-Name=PFinal
+FileName=ProjetoFinal.dev
+Name=ProjetoFinal
 Type=1
 Ver=2
 ObjFiles=
@@ -27,8 +27,8 @@ CommandLine=
 Folders=
 IncludeVersionInfo=0
 SupportXPThemes=0
-CompilerSet=0
-CompilerSettings=0000000000000000000000000
+CompilerSet=1
+CompilerSettings=0000000000000000001000000
 UnitCount=7
 
 [VersionInfo]
@@ -51,26 +51,6 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit2]
-FileName=Gerenciamento.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit3]
-FileName=Individuos.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit4]
 FileName=Individuos.h
 CompileCpp=1
 Folder=
@@ -80,7 +60,27 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit5]
+[Unit1]
+FileName=Individuos.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit3]
+FileName=Livros.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit4]
 FileName=Livros.cpp
 CompileCpp=1
 Folder=
@@ -91,7 +91,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit6]
-FileName=Livros.h
+FileName=Gerenciamento.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -110,7 +110,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit1]
+[Unit5]
 FileName=Gerenciamento.cpp
 CompileCpp=1
 Folder=
