@@ -1013,10 +1013,11 @@ void Gerenciamento::menuCliente(int& flagOK){
 		
 		switch(op){
 			case 1:
-				//Gerenciamento::readFromFileIndividuos();
+				//Gerenciamento::readFromFileIndividuos();				
 				itb = livros.begin();
 				Gerenciamento::buscaLivro(flag,itb);
 				
+				if(flag==1){				
 				cout << "\t\t\t" << "Título: " << (*itb).titulo << endl;
 				cout << "\t\t\t" << "Autor: " <<  (*itb).autor << endl;
 				cout << "\t\t\t" << "Editora: " <<  (*itb).editora << endl;
@@ -1024,6 +1025,10 @@ void Gerenciamento::menuCliente(int& flagOK){
 				cout << "\t\t\t" << "Códigos dos indivíduos solicitantes: " << (*itb).codigoIndividuosSolicitantes << endl;
 				cout << "\t\t\t" << "Número de exemplares disponíveis: " <<  (*itb).nExemplares << endl;
 				cout << endl;
+				}
+				else{
+					cout << "O livro buscado não consta no acervo desta biblioteca." << endl;
+				}
 				system("pause");
 				break;
 			case 2:
@@ -1153,7 +1158,9 @@ void Gerenciamento::menuFuncionario(int& flagOK){
 				cout << "Códigos dos indivíduos solicitantes: " << (*itb).codigoIndividuosSolicitantes << endl;
 				cout << "Número de exemplares disponíveis: " <<  (*itb).nExemplares << endl;
 				}
-				
+				else{
+					cout << "O livro buscado não consta no acervo desta biblioteca." << endl;
+				}
 				flag=0;
 				system("pause");system("cls");
 				break;
