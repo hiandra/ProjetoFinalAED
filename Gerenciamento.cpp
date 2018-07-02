@@ -769,6 +769,9 @@ void Gerenciamento::devolveLivro()
 			    found=str.find(str3,found+1);
 			} 
 			
+			if(str=="" || str==" "){
+				str="-";	
+			}
 			(*li).codigoIndividuosSolicitantes=str;
 			(*li).nExemplares++;
 			cout << "O livro " << (*li).titulo << " da " << (*li).edicao << " edição foi devolvido com sucesso." << endl;
