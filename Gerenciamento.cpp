@@ -119,8 +119,6 @@ void Gerenciamento::addIndividuos()	//adiciona n indivíduos (clientes) na lista.
 	list<Individuos>::iterator it;
 	string arquivo = "individuos.txt";
 	
-//	Gerenciamento::readFromFileIndividuos();
-	
 	cout << "Digite quantas pessoas vai cadastrar: ";
 	cin >> n;
 	
@@ -144,8 +142,6 @@ void Gerenciamento::addIndividuos()	//adiciona n indivíduos (clientes) na lista.
 		it--;			
 		cout << endl << "Seu código de usuário para login é: " << (*it).codigo << endl << endl; 
 	}
-	
-	//Gerenciamento::writeFileIndividuos();
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -155,8 +151,6 @@ void Gerenciamento::addFuncionarios()	//adiciona n funcionários na lista.
 	int n,i,code;
 	list<Individuos>::iterator it;
 	string arquivo = "individuos.txt";
-	
-//	Gerenciamento::readFromFileIndividuos();
 	
 	cout << "Digite quantos funcionários vai cadastrar: ";
 	cin >> n;
@@ -183,8 +177,6 @@ void Gerenciamento::addFuncionarios()	//adiciona n funcionários na lista.
 		cout << endl << "Seu código de usuário para login é: " << (*it).codigo << endl << endl;
 		 
 	}
-	
-	//Gerenciamento::writeFileIndividuos();
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -205,11 +197,8 @@ int Gerenciamento::busca_binaria(int x, int N, int a[])	//este método recebe um 
 			R = m;	
 	}
 	
-	if(x==a[R]){	
-		//cout << "R: " << R << " a[R]: " << a[R] << endl;
-		//system("pause");
+	if(x==a[R])	
 		return R;
-	}
 	else
 		return -1;				
 }
@@ -224,16 +213,14 @@ void Gerenciamento::buscaIndividuo(int& flag, list<Individuos>::iterator& it)	//
 	string arquivo = "individuos.txt";
 	vector<int>::size_type i;
 	
-	//Gerenciamento::readFromFileIndividuos();
-	
 	it = individuos.begin();
 	
 	int size = static_cast<int>(codigos_individuos.size());
 	int a[size];
 	
-	for(i=0;i<codigos_individuos.size();i++){	//carrega o array com os elementos de codigos_individuos
+	for(i=0;i<codigos_individuos.size();i++)	//carrega o array com os elementos de codigos_individuos
+	{	
 		a[static_cast<int>(i)] = codigos_individuos[i];
-		//cout << "i: " << i << "a[i]: "<< a[i] << endl;
 	}
 	
 	
@@ -270,8 +257,7 @@ void Gerenciamento::removeIndividuo()	//remove um indivíduo da lista
 		it = individuos.erase(it);
 	}
 	
-	cout << "indivíduo removido com sucesso." << endl;
-	//Gerenciamento::writeFileIndividuos();
+	cout << "Indivíduo removido com sucesso." << endl;
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -282,10 +268,7 @@ void Gerenciamento::editaIndividuo()	//edita n parâmetros de um dado indivíduo
 	list<Individuos>::iterator it;
 	list<Individuos>::size_type i,j,k;
 	int opcao = 1;
-	string nada="";
-	
-	//if(individuos.size()==0)	//garante que o arquivo não será lido caso esteja vazio
-	//	Gerenciamento::readFromFileIndividuos();	
+	string nada="";	
 			
 	i = individuos.size();
 	
@@ -314,7 +297,7 @@ void Gerenciamento::editaIndividuo()	//edita n parâmetros de um dado indivíduo
 			
 			case 1 : cout << "Digite o nome atualizado: ";
 					 getline(cin,nada);
-					 getline(cin,nome);
+					 getline(cin,(*it).nome);
 					 k = individuos.size();
 					 if(k > i)
 					 {
@@ -346,7 +329,7 @@ void Gerenciamento::editaIndividuo()	//edita n parâmetros de um dado indivíduo
 					 
 			case 4 : cout << "Digite o endereço atualizado: ";
 					 getline(cin,nada);
-					 getline(cin,endereco);
+					 getline(cin,(*it).endereco);
 					 k = individuos.size();
 					 if(k > i)
 					 {
@@ -390,8 +373,6 @@ void Gerenciamento::editaIndividuo()	//edita n parâmetros de um dado indivíduo
 					  		 		 		 		 	 		 		 		 		 		 		 
 		}
 	}
-	
-	//Gerenciamento::writeFileIndividuos();
 	
 }
 
@@ -487,8 +468,6 @@ void Gerenciamento::addLivros()	//adiciona n livros na lista.
 	list<Livros>::iterator it;
 	string arquivo = "livros.txt";
 	
-//	Gerenciamento::readFromFileIndividuos();
-	
 	cout << endl << "Digite quantos livros vai cadastrar: ";
 	cin >> n;
 		
@@ -499,10 +478,6 @@ void Gerenciamento::addLivros()	//adiciona n livros na lista.
 		livro.inicializaLivro();
 		livros.push_back(livro);
 	}
-	
-	//Gerenciamento::mostraLivros();system("pause");
-	
-	//Gerenciamento::writeFileLivros();
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -512,8 +487,6 @@ void Gerenciamento::buscaLivro(int& flag, list<Livros>::iterator& it)
 	string arquivo = "livros.txt";
 	string title,edition;
 	string nada = "";
-	
-	//Gerenciamento::readFromFileLivros();
 	
 	it = livros.begin();
 	
@@ -550,7 +523,6 @@ void Gerenciamento::removeLivro()
 		it = livros.erase(it);
 	
 	cout << "Livro removido com sucesso." << endl;
-//	Gerenciamento::writeFileLivros();
 	
 }
 
@@ -563,11 +535,7 @@ void Gerenciamento::editaLivro()
 	list<Livros>::iterator it;
 	list<Livros>::size_type i,j,k;
 	int opcao = 1;
-	string nada = "";
-	
-	//
-	if(livros.size()==0)	//garante que o arquivo não será lido caso esteja vazio
-	//	Gerenciamento::readFromFileLivros();	
+	string nada = "";	
 	
 	i = livros.size();
 		Gerenciamento::buscaLivro(flag,it);
@@ -664,7 +632,6 @@ void Gerenciamento::editaLivro()
 		}
 	}
 	
-//	Gerenciamento::writeFileLivros();
 	}
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -677,9 +644,7 @@ void Gerenciamento::emprestaLivro()
 	list<Individuos>::iterator it;
 	list<Livros>::iterator li;
 	
-	//Gerenciamento::readFromFileIndividuos();
-	//Gerenciamento::readFromFileLivros();
-	
+
 	cout << endl << "Insira seu código de usuário: ";
 	cin >> code;
 	cout << endl;
@@ -729,9 +694,6 @@ void Gerenciamento::devolveLivro()
 	int flag1 = 0,flag2 = 0;
 	list<Individuos>::iterator it;
 	list<Livros>::iterator li;
-	
-	//Gerenciamento::readFromFileIndividuos();
-	//Gerenciamento::readFromFileLivros();
 	
 	cout << endl << "Insira seu código de usuário: ";
 	cin >> code;
@@ -819,7 +781,6 @@ void Gerenciamento::mostraLivros()	//mostra todos os livros cadastrados
 {
 	string arquivo = "livros.txt";
 	list<Livros>::iterator it;
-//	Gerenciamento::readFromFileLivros();
 	
 	cout << endl;
 	if(livros.size() == 0)
@@ -965,8 +926,6 @@ void Gerenciamento::buscaLogin(int& flag, list<Individuos>::iterator& it, int co
 	int j;
 	vector<int>::size_type i;
 	
-	//Gerenciamento::readFromFileIndividuos();
-	
 	it = individuos.begin();
 	
 	int size = static_cast<int>(codigos_individuos.size());
@@ -974,7 +933,7 @@ void Gerenciamento::buscaLogin(int& flag, list<Individuos>::iterator& it, int co
 	
 	for(i=0;i<codigos_individuos.size();i++) {	//carrega o array com os elementos de codigos_individuos
 		a[static_cast<int>(i)] =  codigos_individuos[i];
-		//cout << a[static_cast<int>(i)] << endl;
+		
 	}
 	
 	pos_individuo = Gerenciamento::busca_binaria(code,size,a);
@@ -1012,8 +971,7 @@ void Gerenciamento::menuCliente(int& flagOK){
 		cin >> op;
 		
 		switch(op){
-			case 1:
-				//Gerenciamento::readFromFileIndividuos();				
+			case 1:				
 				itb = livros.begin();
 				Gerenciamento::buscaLivro(flag,itb);
 				

@@ -30,9 +30,7 @@ int main()
 		}
 		system("cls");
 	}
-	
-	//obj1.addIndividuos();
-	
+		
 	
 	
 	return 0;
